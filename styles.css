@@ -1,0 +1,66 @@
+/* Estilos personalizados adicionais */
+/* Este arquivo é para estilos que não podem ser facilmente implementados com Tailwind */
+
+/* Animações personalizadas */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Estilos para scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f5f3ff;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #7c3aed;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6d28d9;
+}
+
+/* Estilos para seleção de texto */
+::selection {
+  background-color: #8b5cf6;
+  color: white;
+}
+
+/* Efeito de gradiente animado */
+.gradient-animation {
+  background: linear-gradient(-45deg, #7c3aed, #8b5cf6, #a78bfa, #c4b5fd);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Efeito de brilho para elementos destacados */
+.glow {
+  box-shadow: 0 0 15px rgba(124, 58, 237, 0.5);
+  transition: box-shadow 0.3s ease;
+}
+
+.glow:hover {
+  box-shadow: 0 0 25px rgba(124, 58, 237, 0.8);
+}
