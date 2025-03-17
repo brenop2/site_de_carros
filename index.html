@@ -1,608 +1,309 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CarHub - Seu destino para carros de qualidade</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <!-- Tailwind Config -->
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              primary: {
-                50: "#f5f3ff",
-                100: "#ede9fe",
-                200: "#ddd6fe",
-                300: "#c4b5fd",
-                400: "#a78bfa",
-                500: "#8b5cf6",
-                600: "#7c3aed",
-                700: "#6d28d9",
-                800: "#5b21b6",
-                900: "#4c1d95",
-              },
-              secondary: "#f8fafc",
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CarHub - Seu destino para carros de qualidade</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Tailwind Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#e6f0ff',
+              100: '#cce0ff',
+              200: '#99c2ff',
+              300: '#66a3ff',
+              400: '#3385ff',
+              500: '#0066ff',
+              600: '#0052cc',
+              700: '#003d99',
+              800: '#002966',
+              900: '#001433',
             },
-          },
-        },
-      };
-    </script>
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/styles.css" />
-  </head>
-  <body
-    class="font-sans text-gray-800 bg-gradient-to-br from-primary-50 to-white"
-  >
-    <!-- Header -->
-    <header class="sticky top-0 z-50 w-full bg-white shadow-md">
-      <div
-        class="container mx-auto px-4 flex items-center justify-between h-20"
-      >
-        <a
-          href="index.html"
-          class="flex items-center text-primary-600 font-bold text-2xl"
-        >
-          <i class="fas fa-car mr-2 text-3xl"></i>
-          <span>CarHub</span>
+            secondary: '#f8fafc',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="font-sans text-gray-800 bg-gradient-to-br from-primary-50 to-white">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 w-full bg-white shadow-md">
+    <div class="container mx-auto px-4 flex items-center justify-between h-20">
+      <a href="index.html" class="flex items-center text-primary-600 font-bold text-2xl">
+        <i class="fas fa-car mr-2 text-3xl"></i>
+        <span>CarHub</span>
+      </a>
+      <nav class="hidden md:flex space-x-8">
+        <a href="#" class="text-sm font-medium text-primary-600 border-b-2 border-primary-500">Início</a>
+        <a href="#" class="text-sm font-medium text-gray-700 hover:text-primary-600">Estoque</a>
+        <a href="#" class="text-sm font-medium text-gray-700 hover:text-primary-600">Financiamento</a>
+        <a href="#" class="text-sm font-medium text-gray-700 hover:text-primary-600">Serviços</a>
+        <a href="#" class="text-sm font-medium text-gray-700 hover:text-primary-600">Sobre Nós</a>
+        <a href="#" class="text-sm font-medium text-gray-700 hover:text-primary-600">Contato</a>
+      </nav>
+      <div class="hidden md:flex items-center">
+        <a href="tel:11123456789" class="flex items-center text-primary-600 font-semibold">
+          <i class="fas fa-phone mr-2"></i>
+          (11) 1234-5678
         </a>
-        <nav class="hidden md:flex space-x-8">
-          <a
-            href="#"
-            class="text-sm font-medium text-primary-600 border-b-2 border-primary-500"
-            >Início</a
-          >
-          <a
-            href="#"
-            class="text-sm font-medium text-gray-700 hover:text-primary-600"
-            >Estoque</a
-          >
-          <a
-            href="#"
-            class="text-sm font-medium text-gray-700 hover:text-primary-600"
-            >Financiamento</a
-          >
-          <a
-            href="#"
-            class="text-sm font-medium text-gray-700 hover:text-primary-600"
-            >Serviços</a
-          >
-          <a
-            href="#"
-            class="text-sm font-medium text-gray-700 hover:text-primary-600"
-            >Sobre Nós</a
-          >
-          <a
-            href="#"
-            class="text-sm font-medium text-gray-700 hover:text-primary-600"
-            >Contato</a
-          >
-        </nav>
-        <div class="hidden md:flex items-center">
-          <a
-            href="tel:11123456789"
-            class="flex items-center text-primary-600 font-semibold"
-          >
-            <i class="fas fa-phone mr-2"></i>
-            (11) 1234-5678
-          </a>
+      </div>
+      <button class="md:hidden text-2xl text-primary-600" id="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="fixed top-0 right-0 w-4/5 max-w-sm h-full bg-white shadow-lg z-50 transform translate-x-full transition-transform duration-300 ease-in-out" id="mobile-menu">
+    <div class="p-6">
+      <div class="flex justify-between items-center mb-8">
+        <div class="flex items-center text-primary-600 font-bold text-2xl">
+          <i class="fas fa-car mr-2"></i>
+          <span>CarHub</span>
         </div>
-        <button
-          class="md:hidden text-2xl text-primary-600"
-          id="mobile-menu-btn"
-        >
-          <i class="fas fa-bars"></i>
+        <button class="text-2xl text-gray-700" id="close-menu-btn">
+          <i class="fas fa-times"></i>
         </button>
       </div>
-    </header>
+      <nav class="flex flex-col space-y-6">
+        <a href="#" class="text-base font-medium text-primary-600">Início</a>
+        <a href="#" class="text-base font-medium text-gray-700 hover:text-primary-600">Estoque</a>
+        <a href="#" class="text-base font-medium text-gray-700 hover:text-primary-600">Financiamento</a>
+        <a href="#" class="text-base font-medium text-gray-700 hover:text-primary-600">Serviços</a>
+        <a href="#" class="text-base font-medium text-gray-700 hover:text-primary-600">Sobre Nós</a>
+        <a href="#" class="text-base font-medium text-gray-700 hover:text-primary-600">Contato</a>
+      </nav>
+      <div class="mt-8">
+        <a href="tel:11123456789" class="flex items-center justify-center w-full bg-primary-600 text-white py-3 px-4 rounded-md font-semibold">
+          <i class="fas fa-phone mr-2"></i>
+          (11) 1234-5678
+        </a>
+      </div>
+    </div>
+  </div>
 
-    <!-- Mobile Menu -->
-    <div
-      class="fixed top-0 right-0 w-4/5 max-w-sm h-full bg-white shadow-lg z-50 transform translate-x-full transition-transform duration-300 ease-in-out"
-      id="mobile-menu"
-    >
-      <div class="p-6">
-        <div class="flex justify-between items-center mb-8">
-          <div class="flex items-center text-primary-600 font-bold text-2xl">
-            <i class="fas fa-car mr-2"></i>
-            <span>CarHub</span>
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-primary-700 via-primary-600 to-primary-500 text-white py-16 md:py-24">
+      <div class="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+        <div class="flex flex-col justify-center">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">Encontre Seu Carro Perfeito</h1>
+          <p class="text-lg text-primary-100 mb-8">Navegue por nossa extensa coleção de veículos de qualidade. De sedans a SUVs, temos o carro perfeito para você.</p>
+          <div class="flex flex-wrap gap-4">
+            <a href="#" class="bg-white text-primary-600 hover:bg-gray-100 font-semibold py-3 px-6 rounded-md transition duration-300">Ver Estoque</a>
+            <a href="#" class="border-2 border-white text-white hover:bg-white hover:text-primary-600 font-semibold py-3 px-6 rounded-md transition duration-300">Agendar Test Drive</a>
           </div>
-          <button class="text-2xl text-gray-700" id="close-menu-btn">
-            <i class="fas fa-times"></i>
-          </button>
         </div>
-        <nav class="flex flex-col space-y-6">
-          <a href="#" class="text-base font-medium text-primary-600">Início</a>
-          <a
-            href="#"
-            class="text-base font-medium text-gray-700 hover:text-primary-600"
-            >Estoque</a
-          >
-          <a
-            href="#"
-            class="text-base font-medium text-gray-700 hover:text-primary-600"
-            >Financiamento</a
-          >
-          <a
-            href="#"
-            class="text-base font-medium text-gray-700 hover:text-primary-600"
-            >Serviços</a
-          >
-          <a
-            href="#"
-            class="text-base font-medium text-gray-700 hover:text-primary-600"
-            >Sobre Nós</a
-          >
-          <a
-            href="#"
-            class="text-base font-medium text-gray-700 hover:text-primary-600"
-            >Contato</a
-          >
-        </nav>
-        <div class="mt-8">
-          <a
-            href="tel:11123456789"
-            class="flex items-center justify-center w-full bg-primary-600 text-white py-3 px-4 rounded-md font-semibold"
-          >
-            <i class="fas fa-phone mr-2"></i>
-            (11) 1234-5678
+        <div class="flex justify-center">
+          <div class="rounded-lg overflow-hidden shadow-xl">
+            <img src="https://placehold.co/800x600/0066ff/FFFFFF?text=Carro+em+Destaque" alt="Carro em destaque" class="w-full h-auto">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Vehicles Section -->
+    <section class="py-16 md:py-24 bg-gradient-to-b from-white to-primary-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-primary-600 mb-4">Veículos em Destaque</h2>
+          <p class="text-gray-600 max-w-3xl mx-auto">Explore nossa seleção de veículos premium com recursos e valores excepcionais.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12" id="featured-cars">
+          <!-- Featured cars will be inserted here by JavaScript -->
+        </div>
+        <div class="text-center">
+          <a href="#" class="inline-flex items-center border-2 border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white font-semibold py-3 px-6 rounded-md transition duration-300">
+            Ver Todos os Veículos em Destaque
+            <i class="fas fa-chevron-right ml-2"></i>
           </a>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- Main Content -->
-    <main>
-      <!-- Hero Section -->
-      <section
-        class="bg-gradient-to-r from-primary-700 via-primary-600 to-primary-500 text-white py-16 md:py-24"
-      >
-        <div
-          class="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center"
-        >
-          <div class="flex flex-col justify-center">
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-              Encontre Seu Carro Perfeito
-            </h1>
-            <p class="text-lg text-primary-100 mb-8">
-              Navegue por nossa extensa coleção de veículos de qualidade. De
-              sedans a SUVs, temos o carro perfeito para você.
-            </p>
-            <div class="flex flex-wrap gap-4">
-              <a
-                href="#"
-                class="bg-white text-primary-700 hover:bg-primary-100 hover:text-primary-800 font-semibold py-3 px-6 rounded-md transition duration-300"
-                >Ver Estoque</a
-              >
-              <a
-                href="#"
-                class="border-2 border-white text-white hover:bg-white hover:text-primary-700 font-semibold py-3 px-6 rounded-md transition duration-300"
-                >Agendar Test Drive</a
-              >
-            </div>
-          </div>
-          <div class="flex justify-center">
-            <div class="rounded-lg overflow-hidden shadow-xl">
-              <img
-                src="https://placehold.co/800x600/7c3aed/FFFFFF?text=Carro+em+Destaque"
-                alt="Carro em destaque"
-                class="w-full h-auto"
-              />
-            </div>
-          </div>
+    <!-- Browse Inventory Section -->
+    <section class="bg-gradient-to-br from-primary-100 to-primary-50 py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-primary-600 mb-4">Navegue pelo Nosso Estoque</h2>
+          <p class="text-gray-600 max-w-3xl mx-auto">Encontre o veículo perfeito que se adapta ao seu estilo de vida e orçamento.</p>
         </div>
-      </section>
-
-      <!-- Featured Vehicles Section -->
-      <section class="py-16 md:py-24 bg-gradient-to-b from-white to-primary-50">
-        <div class="container mx-auto px-4">
-          <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-primary-600 mb-4">
-              Veículos em Destaque
-            </h2>
-            <p class="text-gray-600 max-w-3xl mx-auto">
-              Explore nossa seleção de veículos premium com recursos e valores
-              excepcionais.
-            </p>
+        <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-8">
+          <div class="relative max-w-md w-full">
+            <i class="fas fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500"></i>
+            <input type="search" placeholder="Buscar carros..." class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500">
           </div>
-          <div
-            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12"
-            id="featured-cars"
-          >
-            <!-- Featured cars will be inserted here by JavaScript -->
-          </div>
-          <div class="text-center">
-            <a
-              href="#"
-              class="inline-flex items-center border-2 border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white font-semibold py-3 px-6 rounded-md transition duration-300"
-            >
-              Ver Todos os Veículos em Destaque
-              <i class="fas fa-chevron-right ml-2"></i>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <!-- Browse Inventory Section -->
-      <section
-        class="bg-gradient-to-br from-primary-100 to-primary-50 py-16 md:py-24"
-      >
-        <div class="container mx-auto px-4">
-          <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-primary-600 mb-4">
-              Navegue pelo Nosso Estoque
-            </h2>
-            <p class="text-gray-600 max-w-3xl mx-auto">
-              Encontre o veículo perfeito que se adapta ao seu estilo de vida e
-              orçamento.
-            </p>
-          </div>
-          <div
-            class="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-8"
-          >
-            <div class="relative max-w-md w-full">
-              <i
-                class="fas fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500"
-              ></i>
-              <input
-                type="search"
-                placeholder="Buscar carros..."
-                class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white"
-              />
-            </div>
-            <div class="flex gap-3">
-              <button
-                class="flex items-center bg-white border border-gray-300 text-gray-700 py-2 px-4 rounded-md hover:bg-gray-50"
-              >
-                <i class="fas fa-filter mr-2 text-primary-600"></i>
-                Filtrar
-              </button>
-              <button
-                class="flex items-center bg-white border border-gray-300 text-gray-700 py-2 px-4 rounded-md hover:bg-gray-50"
-              >
-                <i class="fas fa-sliders-h mr-2 text-primary-600"></i>
-                Ordenar
-              </button>
-            </div>
-          </div>
-          <div class="mb-12 bg-white p-6 rounded-lg shadow-md">
-            <div class="flex overflow-x-auto border-b border-gray-300 mb-8">
-              <button
-                class="tab-btn active whitespace-nowrap px-6 py-3 font-medium text-primary-600 border-b-2 border-primary-600"
-                data-tab="all"
-              >
-                Todos os Veículos
-              </button>
-              <button
-                class="tab-btn whitespace-nowrap px-6 py-3 font-medium text-gray-600 border-b-2 border-transparent hover:text-primary-600"
-                data-tab="new"
-              >
-                Novos
-              </button>
-              <button
-                class="tab-btn whitespace-nowrap px-6 py-3 font-medium text-gray-600 border-b-2 border-transparent hover:text-primary-600"
-                data-tab="used"
-              >
-                Usados
-              </button>
-              <button
-                class="tab-btn whitespace-nowrap px-6 py-3 font-medium text-gray-600 border-b-2 border-transparent hover:text-primary-600"
-                data-tab="certified"
-              >
-                Seminovos Certificados
-              </button>
-            </div>
-            <div class="tab-content active" id="tab-all">
-              <div
-                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-                id="all-cars"
-              >
-                <!-- All cars will be inserted here by JavaScript -->
-              </div>
-            </div>
-            <div class="tab-content hidden" id="tab-new">
-              <div
-                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-                id="new-cars"
-              >
-                <!-- New cars will be inserted here by JavaScript -->
-              </div>
-            </div>
-            <div class="tab-content hidden" id="tab-used">
-              <div
-                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-                id="used-cars"
-              >
-                <!-- Used cars will be inserted here by JavaScript -->
-              </div>
-            </div>
-            <div class="tab-content hidden" id="tab-certified">
-              <div
-                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-                id="certified-cars"
-              >
-                <!-- Certified cars will be inserted here by JavaScript -->
-              </div>
-            </div>
-          </div>
-          <div class="text-center">
-            <button
-              class="border-2 border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white font-semibold py-3 px-6 rounded-md transition duration-300"
-            >
-              Carregar Mais
+          <div class="flex gap-3">
+            <button class="flex items-center bg-white border border-gray-300 text-gray-700 py-2 px-4 rounded-md hover:bg-gray-50">
+              <i class="fas fa-filter mr-2 text-primary-600"></i>
+              Filtrar
+            </button>
+            <button class="flex items-center bg-white border border-gray-300 text-gray-700 py-2 px-4 rounded-md hover:bg-gray-50">
+              <i class="fas fa-sliders-h mr-2 text-primary-600"></i>
+              Ordenar
             </button>
           </div>
         </div>
-      </section>
-
-      <!-- Why Choose Us Section -->
-      <section
-        class="py-16 md:py-24 bg-gradient-to-tl from-primary-200 to-white"
-      >
-        <div
-          class="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
-        >
-          <div class="flex justify-center">
-            <div class="rounded-lg overflow-hidden shadow-xl">
-              <img
-                src="https://placehold.co/800x600/7c3aed/FFFFFF?text=Concessionária"
-                alt="Concessionária de carros"
-                class="w-full h-auto"
-              />
+        <div class="mb-12 bg-white p-6 rounded-lg shadow-md">
+          <div class="flex overflow-x-auto border-b border-gray-300 mb-8">
+            <button class="tab-btn active whitespace-nowrap px-6 py-3 font-medium text-primary-600 border-b-2 border-primary-600" data-tab="all">Todos os Veículos</button>
+            <button class="tab-btn whitespace-nowrap px-6 py-3 font-medium text-gray-600 border-b-2 border-transparent hover:text-primary-600" data-tab="new">Novos</button>
+            <button class="tab-btn whitespace-nowrap px-6 py-3 font-medium text-gray-600 border-b-2 border-transparent hover:text-primary-600" data-tab="used">Usados</button>
+            <button class="tab-btn whitespace-nowrap px-6 py-3 font-medium text-gray-600 border-b-2 border-transparent hover:text-primary-600" data-tab="certified">Seminovos Certificados</button>
+          </div>
+          <div class="tab-content active" id="tab-all">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="all-cars">
+              <!-- All cars will be inserted here by JavaScript -->
             </div>
           </div>
-          <div>
-            <h2 class="text-3xl md:text-4xl font-bold text-primary-600 mb-4">
-              Por Que Nos Escolher?
-            </h2>
-            <p class="text-gray-600 mb-8">
-              Oferecemos uma ampla seleção de veículos de qualidade, preços
-              competitivos e atendimento excepcional ao cliente.
-            </p>
-            <ul class="space-y-4 mb-8">
-              <li class="flex items-start">
-                <div
-                  class="flex-shrink-0 w-6 h-6 rounded-full bg-primary-600 flex items-center justify-center mt-1 mr-3"
-                >
-                  <i class="fas fa-check text-white text-xs"></i>
-                </div>
-                <span>Extenso estoque de veículos novos e usados</span>
-              </li>
-              <li class="flex items-start">
-                <div
-                  class="flex-shrink-0 w-6 h-6 rounded-full bg-primary-600 flex items-center justify-center mt-1 mr-3"
-                >
-                  <i class="fas fa-check text-white text-xs"></i>
-                </div>
-                <span>Preços transparentes sem taxas ocultas</span>
-              </li>
-              <li class="flex items-start">
-                <div
-                  class="flex-shrink-0 w-6 h-6 rounded-full bg-primary-600 flex items-center justify-center mt-1 mr-3"
-                >
-                  <i class="fas fa-check text-white text-xs"></i>
-                </div>
-                <span
-                  >Opções de financiamento flexíveis para todas as situações de
-                  crédito</span
-                >
-              </li>
-              <li class="flex items-start">
-                <div
-                  class="flex-shrink-0 w-6 h-6 rounded-full bg-primary-600 flex items-center justify-center mt-1 mr-3"
-                >
-                  <i class="fas fa-check text-white text-xs"></i>
-                </div>
-                <span
-                  >Departamento de serviços certificado com técnicos
-                  qualificados</span
-                >
-              </li>
-            </ul>
-            <div class="flex flex-wrap gap-4">
-              <a
-                href="#"
-                class="bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-6 rounded-md transition duration-300"
-                >Contate-nos</a
-              >
-              <a
-                href="#"
-                class="border-2 border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white font-semibold py-3 px-6 rounded-md transition duration-300"
-                >Saiba Mais</a
-              >
+          <div class="tab-content hidden" id="tab-new">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="new-cars">
+              <!-- New cars will be inserted here by JavaScript -->
+            </div>
+          </div>
+          <div class="tab-content hidden" id="tab-used">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="used-cars">
+              <!-- Used cars will be inserted here by JavaScript -->
+            </div>
+          </div>
+          <div class="tab-content hidden" id="tab-certified">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="certified-cars">
+              <!-- Certified cars will be inserted here by JavaScript -->
             </div>
           </div>
         </div>
-      </section>
-    </main>
+        <div class="text-center">
+          <button class="border-2 border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white font-semibold py-3 px-6 rounded-md transition duration-300">Carregar Mais</button>
+        </div>
+      </div>
+    </section>
 
-    <!-- Footer -->
-    <footer
-      class="bg-gradient-to-b from-primary-700 to-primary-900 text-white pt-16 pb-8"
-    >
-      <div class="container mx-auto px-4">
-        <div
-          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12"
-        >
-          <div>
-            <div class="flex items-center text-white font-bold text-2xl mb-6">
-              <i class="fas fa-car mr-2 text-3xl"></i>
-              <span>CarHub</span>
-            </div>
-            <p class="text-primary-100 mb-6">
-              Seu destino confiável para veículos de qualidade e serviço
-              excepcional.
-            </p>
-            <div class="flex space-x-4">
-              <a
-                href="#"
-                class="w-9 h-9 rounded-full bg-primary-600 hover:bg-primary-500 flex items-center justify-center transition duration-300"
-              >
-                <i class="fab fa-facebook-f"></i>
-              </a>
-              <a
-                href="#"
-                class="w-9 h-9 rounded-full bg-primary-600 hover:bg-primary-500 flex items-center justify-center transition duration-300"
-              >
-                <i class="fab fa-twitter"></i>
-              </a>
-              <a
-                href="#"
-                class="w-9 h-9 rounded-full bg-primary-600 hover:bg-primary-500 flex items-center justify-center transition duration-300"
-              >
-                <i class="fab fa-instagram"></i>
-              </a>
-              <a
-                href="#"
-                class="w-9 h-9 rounded-full bg-primary-600 hover:bg-primary-500 flex items-center justify-center transition duration-300"
-              >
-                <i class="fab fa-youtube"></i>
-              </a>
-            </div>
-          </div>
-          <div>
-            <h3
-              class="text-lg font-semibold mb-6 relative pb-3 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-12 after:h-0.5 after:bg-primary-400"
-            >
-              Links Rápidos
-            </h3>
-            <ul class="space-y-3">
-              <li>
-                <a
-                  href="#"
-                  class="text-primary-100 hover:text-white transition duration-300"
-                  >Início</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="text-primary-100 hover:text-white transition duration-300"
-                  >Estoque</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="text-primary-100 hover:text-white transition duration-300"
-                  >Financiamento</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="text-primary-100 hover:text-white transition duration-300"
-                  >Serviços</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="text-primary-100 hover:text-white transition duration-300"
-                  >Sobre Nós</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="text-primary-100 hover:text-white transition duration-300"
-                  >Contato</a
-                >
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3
-              class="text-lg font-semibold mb-6 relative pb-3 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-12 after:h-0.5 after:bg-primary-400"
-            >
-              Contate-nos
-            </h3>
-            <address class="text-primary-100 mb-3 not-italic">
-              Rua Principal, 123<br />
-              São Paulo, SP 01234-567
-            </address>
-            <p class="mb-3">
-              <a
-                href="tel:11123456789"
-                class="text-primary-100 hover:text-white transition duration-300"
-                >(11) 1234-5678</a
-              >
-            </p>
-            <p class="mb-3">
-              <a
-                href="mailto:info@carhub.com.br"
-                class="text-primary-100 hover:text-white transition duration-300"
-                >info@carhub.com.br</a
-              >
-            </p>
-            <p class="text-primary-100 mt-6">
-              Seg-Sex: 9h-20h<br />
-              Sáb: 9h-18h<br />
-              Dom: 11h-17h
-            </p>
-          </div>
-          <div>
-            <h3
-              class="text-lg font-semibold mb-6 relative pb-3 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-12 after:h-0.5 after:bg-primary-400"
-            >
-              Newsletter
-            </h3>
-            <p class="text-primary-100 mb-6">
-              Inscreva-se em nossa newsletter para receber as últimas
-              atualizações e ofertas.
-            </p>
-            <form class="newsletter-form space-y-3">
-              <input
-                type="email"
-                placeholder="Digite seu email"
-                required
-                class="w-full px-4 py-3 bg-primary-600 border border-primary-500 rounded-md text-white placeholder-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-400"
-              />
-              <button
-                type="submit"
-                class="w-full bg-white hover:bg-primary-100 text-primary-700 font-semibold py-3 px-4 rounded-md transition duration-300"
-              >
-                Inscrever-se
-              </button>
-            </form>
+    <!-- Why Choose Us Section -->
+    <section class="py-16 md:py-24 bg-gradient-to-tl from-primary-200 to-white">
+      <div class="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="flex justify-center">
+          <div class="rounded-lg overflow-hidden shadow-xl">
+            <img src="https://placehold.co/800x600/0066ff/FFFFFF?text=Concessionária" alt="Concessionária de carros" class="w-full h-auto">
           </div>
         </div>
-        <div
-          class="pt-8 border-t border-primary-600 flex flex-col md:flex-row md:justify-between md:items-center gap-4"
-        >
-          <p class="text-primary-300 text-sm">
-            &copy; 2023 CarHub. Todos os direitos reservados.
-          </p>
-          <div class="flex flex-wrap gap-6">
-            <a
-              href="#"
-              class="text-primary-300 hover:text-white text-sm transition duration-300"
-              >Política de Privacidade</a
-            >
-            <a
-              href="#"
-              class="text-primary-300 hover:text-white text-sm transition duration-300"
-              >Termos de Serviço</a
-            >
-            <a
-              href="#"
-              class="text-primary-300 hover:text-white text-sm transition duration-300"
-              >Política de Cookies</a
-            >
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold text-primary-600 mb-4">Por Que Nos Escolher?</h2>
+          <p class="text-gray-600 mb-8">Oferecemos uma ampla seleção de veículos de qualidade, preços competitivos e atendimento excepcional ao cliente.</p>
+          <ul class="space-y-4 mb-8">
+            <li class="flex items-start">
+              <div class="flex-shrink-0 w-6 h-6 rounded-full bg-primary-600 flex items-center justify-center mt-1 mr-3">
+                <i class="fas fa-check text-white text-xs"></i>
+              </div>
+              <span>Extenso estoque de veículos novos e usados</span>
+            </li>
+            <li class="flex items-start">
+              <div class="flex-shrink-0 w-6 h-6 rounded-full bg-primary-600 flex items-center justify-center mt-1 mr-3">
+                <i class="fas fa-check text-white text-xs"></i>
+              </div>
+              <span>Preços transparentes sem taxas ocultas</span>
+            </li>
+            <li class="flex items-start">
+              <div class="flex-shrink-0 w-6 h-6 rounded-full bg-primary-600 flex items-center justify-center mt-1 mr-3">
+                <i class="fas fa-check text-white text-xs"></i>
+              </div>
+              <span>Opções de financiamento flexíveis para todas as situações de crédito</span>
+            </li>
+            <li class="flex items-start">
+              <div class="flex-shrink-0 w-6 h-6 rounded-full bg-primary-600 flex items-center justify-center mt-1 mr-3">
+                <i class="fas fa-check text-white text-xs"></i>
+              </div>
+              <span>Departamento de serviços certificado com técnicos qualificados</span>
+            </li>
+          </ul>
+          <div class="flex flex-wrap gap-4">
+            <a href="#" class="bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-6 rounded-md transition duration-300">Contate-nos</a>
+            <a href="#" class="border-2 border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white font-semibold py-3 px-6 rounded-md transition duration-300">Saiba Mais</a>
           </div>
         </div>
       </div>
-    </footer>
+    </section>
+  </main>
 
-    <!-- JavaScript -->
-    <script src="js/data.js"></script>
-    <script src="js/script.js"></script>
-  </body>
+  <!-- Footer -->
+  <footer class="bg-gradient-to-b from-primary-700 to-primary-900 text-white pt-16 pb-8">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+        <div>
+          <div class="flex items-center text-white font-bold text-2xl mb-6">
+            <i class="fas fa-car mr-2 text-3xl"></i>
+            <span>CarHub</span>
+          </div>
+          <p class="text-primary-100 mb-6">Seu destino confiável para veículos de qualidade e serviço excepcional.</p>
+          <div class="flex space-x-4">
+            <a href="#" class="w-9 h-9 rounded-full bg-primary-700 hover:bg-primary-600 flex items-center justify-center transition duration-300">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="w-9 h-9 rounded-full bg-primary-700 hover:bg-primary-600 flex items-center justify-center transition duration-300">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="w-9 h-9 rounded-full bg-primary-700 hover:bg-primary-600 flex items-center justify-center transition duration-300">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="w-9 h-9 rounded-full bg-primary-700 hover:bg-primary-600 flex items-center justify-center transition duration-300">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-6 relative pb-3 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-12 after:h-0.5 after:bg-primary-500">Links Rápidos</h3>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-primary-100 hover:text-white transition duration-300">Início</a></li>
+            <li><a href="#" class="text-primary-100 hover:text-white transition duration-300">Estoque</a></li>
+            <li><a href="#" class="text-primary-100 hover:text-white transition duration-300">Financiamento</a></li>
+            <li><a href="#" class="text-primary-100 hover:text-white transition duration-300">Serviços</a></li>
+            <li><a href="#" class="text-primary-100 hover:text-white transition duration-300">Sobre Nós</a></li>
+            <li><a href="#" class="text-primary-100 hover:text-white transition duration-300">Contato</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-6 relative pb-3 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-12 after:h-0.5 after:bg-primary-500">Contate-nos</h3>
+          <address class="text-primary-100 mb-3 not-italic">
+            Rua Principal, 123<br>
+            São Paulo, SP 01234-567
+          </address>
+          <p class="mb-3"><a href="tel:11123456789" class="text-primary-100 hover:text-white transition duration-300">(11) 1234-5678</a></p>
+          <p class="mb-3"><a href="mailto:info@carhub.com.br" class="text-primary-100 hover:text-white transition duration-300">info@carhub.com.br</a></p>
+          <p class="text-primary-100 mt-6">
+            Seg-Sex: 9h-20h<br>
+            Sáb: 9h-18h<br>
+            Dom: 11h-17h
+          </p>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-6 relative pb-3 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-12 after:h-0.5 after:bg-primary-500">Newsletter</h3>
+          <p class="text-primary-100 mb-6">Inscreva-se em nossa newsletter para receber as últimas atualizações e ofertas.</p>
+          <form class="newsletter-form space-y-3">
+            <input type="email" placeholder="Digite seu email" required class="w-full px-4 py-3 bg-primary-700 border border-primary-600 rounded-md text-white placeholder-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-500">
+            <button type="submit" class="w-full bg-primary-600 hover:bg-primary-500 text-white font-semibold py-3 px-4 rounded-md transition duration-300">Inscrever-se</button>
+          </form>
+        </div>
+      </div>
+      <div class="pt-8 border-t border-primary-700 flex flex-col md:flex-row md:justify-between md:items-center gap-4">
+        <p class="text-primary-300 text-sm">&copy; 2023 CarHub. Todos os direitos reservados.</p>
+        <div class="flex flex-wrap gap-6">
+          <a href="#" class="text-primary-300 hover:text-white text-sm transition duration-300">Política de Privacidade</a>
+          <a href="#" class="text-primary-300 hover:text-white text-sm transition duration-300">Termos de Serviço</a>
+          <a href="#" class="text-primary-300 hover:text-white text-sm transition duration-300">Política de Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
 </html>
+

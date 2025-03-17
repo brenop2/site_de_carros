@@ -1,84 +1,110 @@
-// Sample car data
+// Funções principais do site
+
+// Sample car data (replace with actual data source)
 const cars = [
   {
     id: 1,
     make: "Toyota",
-    model: "Camry",
-    year: 2023,
-    price: 125999,
-    mileage: 12500,
-    fuelType: "Híbrido",
-    transmission: "Automático",
-    image: "https://placehold.co/600x400/0066ff/FFFFFF?text=Toyota+Camry",
+    model: "Corolla",
+    year: 2022,
+    mileage: 35000,
+    price: 85000,
+    fuelType: "Flex",
+    transmission: "Automática",
+    image: "https://source.unsplash.com/300x200/?car,toyota",
     featured: true,
-    description: "O Toyota Camry é um sedan confiável e econômico com recursos modernos e interior confortável.",
+    description: "Um sedan confiável e econômico, perfeito para o dia a dia.",
   },
   {
     id: 2,
     make: "Honda",
     model: "Civic",
-    year: 2022,
-    price: 112500,
+    year: 2023,
     mileage: 15000,
-    fuelType: "Gasolina",
-    transmission: "Automático",
-    image: "https://placehold.co/600x400/0066ff/FFFFFF?text=Honda+Civic",
+    price: 110000,
+    fuelType: "Flex",
+    transmission: "Automática",
+    image: "https://source.unsplash.com/300x200/?car,honda",
     featured: false,
-    description:
-      "O Honda Civic oferece excelente economia de combustível, interior espaçoso e recursos avançados de segurança.",
+    description: "Um sedan esportivo e moderno, com tecnologia de ponta.",
   },
   {
     id: 3,
-    make: "Ford",
-    model: "Mustang",
+    make: "Fiat",
+    model: "Pulse",
     year: 2023,
-    price: 245000,
-    mileage: 5000,
-    fuelType: "Gasolina",
-    transmission: "Manual",
-    image: "https://placehold.co/600x400/0066ff/FFFFFF?text=Ford+Mustang",
+    mileage: 8000,
+    price: 95000,
+    fuelType: "Flex",
+    transmission: "Automática",
+    image: "https://source.unsplash.com/300x200/?car,fiat",
     featured: true,
-    description: "O Ford Mustang oferece desempenho emocionante com seu motor potente e design icônico.",
+    description: "Um SUV compacto e estiloso, ideal para a cidade.",
   },
   {
     id: 4,
-    make: "Tesla",
-    model: "Model 3",
-    year: 2023,
-    price: 242990,
-    mileage: 1000,
-    fuelType: "Elétrico",
-    transmission: "Automático",
-    image: "https://placehold.co/600x400/0066ff/FFFFFF?text=Tesla+Model+3",
+    make: "Volkswagen",
+    model: "Gol",
+    year: 2021,
+    mileage: 50000,
+    price: 60000,
+    fuelType: "Flex",
+    transmission: "Manual",
+    image: "https://source.unsplash.com/300x200/?car,volkswagen",
     featured: false,
-    description:
-      "O Tesla Model 3 é um sedan totalmente elétrico com autonomia impressionante, tecnologia de ponta e design minimalista.",
+    description: "Um hatch popular e econômico, perfeito para quem busca praticidade.",
   },
   {
     id: 5,
-    make: "BMW",
-    model: "X5",
-    year: 2022,
-    price: 362500,
-    mileage: 18000,
-    fuelType: "Híbrido",
-    transmission: "Automático",
-    image: "https://placehold.co/600x400/0066ff/FFFFFF?text=BMW+X5",
-    featured: false,
-    description: "O BMW X5 combina luxo, desempenho e versatilidade em um pacote SUV premium.",
+    make: "Chevrolet",
+    model: "Onix",
+    year: 2024,
+    mileage: 2000,
+    price: 75000,
+    fuelType: "Flex",
+    transmission: "Automática",
+    image: "https://source.unsplash.com/300x200/?car,chevrolet",
+    featured: true,
+    description: "Um hatch moderno e conectado, com design arrojado.",
   },
   {
     id: 6,
-    make: "Chevrolet",
-    model: "Silverado",
-    year: 2023,
-    price: 238500,
-    mileage: 8000,
-    fuelType: "Gasolina",
-    transmission: "Automático",
-    image: "https://placehold.co/600x400/0066ff/FFFFFF?text=Chevrolet+Silverado",
+    make: "Hyundai",
+    model: "HB20",
+    year: 2022,
+    mileage: 40000,
+    price: 70000,
+    fuelType: "Flex",
+    transmission: "Manual",
+    image: "https://source.unsplash.com/300x200/?car,hyundai",
     featured: false,
-    description: "O Chevrolet Silverado é uma picape capaz e durável com impressionante capacidade de reboque.",
+    description: "Um hatch compacto e confortável, ideal para o uso urbano.",
+  },
+  {
+    id: 7,
+    make: "Jeep",
+    model: "Compass",
+    year: 2023,
+    mileage: 12000,
+    price: 150000,
+    fuelType: "Flex",
+    transmission: "Automática",
+    image: "https://source.unsplash.com/300x200/?car,jeep",
+    featured: true,
+    description: "Um SUV robusto e elegante, perfeito para quem busca aventura.",
+  },
+  {
+    id: 8,
+    make: "Renault",
+    model: "Kwid",
+    year: 2021,
+    mileage: 60000,
+    price: 50000,
+    fuelType: "Flex",
+    transmission: "Manual",
+    image: "https://source.unsplash.com/300x200/?car,renault",
+    featured: false,
+    description: "Um subcompacto econômico e prático, ideal para o dia a dia.",
   },
 ]
 
@@ -135,9 +161,9 @@ function formatPrice(price) {
 // Create car card HTML with Tailwind classes
 function createCarCard(car, isFeatured = false) {
   return `
-    <div class="bg-white rounded-lg overflow-hidden shadow-lg transition-transform duration-300 hover:-translate-y-2 ${isFeatured ? "featured-card glow" : ""}">
+    <div class="bg-white rounded-lg overflow-hidden shadow-lg transition-transform duration-300 hover:-translate-y-2 ${isFeatured ? "glow" : ""}">
       <div class="relative">
-        <img src="${car.image}" alt="${car.make} ${car.model}" class="w-full h-64 object-cover">
+        <img src="${car.image.replace("/0066ff/", "/7c3aed/")}" alt="${car.make} ${car.model}" class="w-full h-64 object-cover">
         ${car.featured ? '<span class="absolute top-2 right-2 bg-primary-600 text-white text-xs font-semibold px-2 py-1 rounded">Destaque</span>' : ""}
       </div>
       <div class="p-6">
@@ -223,29 +249,25 @@ if (newsletterForm) {
   })
 }
 
-// Initialize on page load
+// Adicionar efeito de gradiente animado aos elementos destacados
 document.addEventListener("DOMContentLoaded", () => {
-  // Adicionar efeito de gradiente animado aos elementos destacados
-  document.addEventListener("DOMContentLoaded", () => {
-    // Adicionar classe para elementos destacados
-    const heroSection = document.querySelector("section:first-of-type")
-    if (heroSection) {
-      heroSection.classList.add("gradient-animation")
-    }
+  // Adicionar classe para elementos destacados
+  const heroSection = document.querySelector("section:first-of-type")
+  if (heroSection) {
+    heroSection.classList.add("gradient-animation")
+  }
 
-    // Adicionar efeito de brilho aos cards em destaque
-    const featuredCards = document.querySelectorAll(".featured-card")
-    featuredCards.forEach((card) => {
-      card.addEventListener("mouseenter", () => {
-        card.classList.add("shadow-lg")
-      })
-      card.addEventListener("mouseleave", () => {
-        card.classList.remove("shadow-lg")
-      })
+  // Adicionar efeito de brilho aos cards em destaque
+  const featuredCards = document.querySelectorAll(".glow")
+  featuredCards.forEach((card) => {
+    card.addEventListener("mouseenter", () => {
+      card.classList.add("shadow-lg")
     })
-
-    console.log("CarHub website loaded successfully!")
+    card.addEventListener("mouseleave", () => {
+      card.classList.remove("shadow-lg")
+    })
   })
+
   console.log("CarHub website loaded successfully!")
 })
 
